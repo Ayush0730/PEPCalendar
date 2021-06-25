@@ -1,0 +1,26 @@
+<%- include("./partials/header") -%>
+<h2 class="heading"><%= date %></h2>
+<% if(data.length === 0){ %>
+    <h3 class="heading">No Events Scheduled</h3>
+    <div class="main">
+
+        <a href="/schedule?date=<%= date %>" class="new-button">Add New Event</a>
+    </div>
+<% }else{ %>
+    <div class="main">
+        <div class="head-title">Start Time</div>
+        <div class="head-title">End Time</div>
+        <div class="head-title">Teacher Name</div>
+        <div class="head-title">Topic</div>
+        <% data.forEach((value)=>{ %>
+            <div class="info"><%= value.startTime %></div>
+            <div class="info"><%= value.endTime %></div>
+            <div class="info"><%= value.teacherName %></div>
+            <div class="info"><%= value.title %></div>
+        <% }) %>
+        <a href="/schedule?date=<%= date %>" class="new-button">Add New Event</a>
+    </div>    
+<% } %>
+
+
+<%- include("./partials/footer") -%>

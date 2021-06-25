@@ -1,0 +1,35 @@
+<%- include("./partials/header") -%>
+<div class="container">
+    <div class="heading">
+        <label for="filter-teacher" class="align-center">Filter by Teacher</label>
+        <select name="teacher" id="filter-teacher">
+            <option value=""></option>
+            <% data.forEach((teacher) => { %>
+                <option value="<%= teacher.id %>"><%= teacher.id %> <%= teacher.name %></option>
+            <% }) %>
+        </select>
+        <h1 class="ml-3rem">June 2021</h1>
+    </div>
+    <div id="calendar">
+        <% const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+        <% for(let day = 1; day< 31; day++){ %>
+            <% const date = new Date(2021, 5, day) %>
+            <% const dayName = new Intl.DateTimeFormat('en-US', {weekday: 'short',}).format(date) %>
+            <% if (day === 1) { %>
+                <% let dayIndex = 0 %>
+                <% while (days[dayIndex] !== dayName) { %>
+                    <div></div>
+                    <% dayIndex++ %>
+                <% } %>
+            <% } %>
+            <% let weekend = false %> 
+            <%  if (dayName === 'Sat' || dayName === 'Sun') weekend = true %> 
+            <div class="day <%= weekend ? 'weekend' : '' %>"><div class="day-name"><%= dayName %></div><%= day %></div>
+        <% } %>     
+    </div>
+    <a href="/schedule"><span title="Add New Schedule" id="new-schedule"><i class="fas fa-plus"></i></span></a>
+</div>
+
+<script src="/js/calendar.js"></script>
+
+<%- include("./partials/footer") -%>

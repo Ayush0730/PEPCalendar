@@ -1,0 +1,24 @@
+<%- include("./partials/header") -%>
+<h1 class="heading">Schedule for <%= data[0].teacherName %></h1>
+<% if(data.length === 0){ %>
+    <h3 class="heading">No Events Scheduled</h3>
+    <a class="new-button" href="/schedule?id=<%= data[0].teacherId %>&name=<%= data[0].teacherName %>">Add New Event</a>
+
+<% }else{ %>
+    <div class="main">
+        <div class="head-title">Date</div>
+        <div class="head-title">Start Time</div>
+        <div class="head-title">End Time</div>
+        <div class="head-title">Topic</div>
+        <% data.forEach((value)=>{ %>
+            <div class="info"><%= value.date %></div>
+            <div class="info"><%= value.startTime %></div>
+            <div class="info"><%= value.endTime %></div>
+            <div class="info"><%= value.title %></div>
+        <% }) %>
+        <a class="new-button" href="/schedule?id=<%= data[0].teacherId %>&name=<%= data[0].teacherName %>">Add New Event</a>
+    </div>    
+<% } %>
+
+
+<%- include("./partials/footer") -%>

@@ -1,0 +1,9 @@
+<%- include("./partials/header") -%>
+    <% data.forEach((teacher) => { %>
+        <h3><%= teacher.id %></h3>
+        <h3><%= teacher.name %></h3>
+        <h3><%= teacher.email %></h3>
+        <h3><%= teacher.subject %></h3>
+    <% }) %>
+
+<%- include("./partials/footer") -%>

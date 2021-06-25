@@ -1,0 +1,226 @@
+body {
+    background-image: linear-gradient(
+        to left bottom,
+        #e766af,
+        #d867bf,
+        #c46bcf,
+        #aa70dd,
+        #8876e9,
+        #6a81ef,
+        #468af1,
+        #0092f0,
+        #009de5,
+        #00a3d0,
+        #00a7b7,
+        #00a89d
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    height: 80vh;
+    width: 80vw;
+    margin: auto;
+}
+
+.day {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.day:hover {
+    background-color: rgba(21, 184, 0, 0.842);
+    color: rgb(255, 251, 4);
+    transform: scale(1.25);
+}
+
+.day-name {
+    align-self: flex-start;
+}
+
+.weekend {
+    color: rgb(255, 255, 255);
+}
+
+#calendar {
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+}
+
+.heading {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.heading p {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgb(5, 132, 216);
+    color: white;
+    max-width: max-content;
+}
+
+.heading select {
+    align-self: center;
+    margin-left: 1rem;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+#new-schedule {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: brown;
+    text-align: center;
+    margin-top: 4px;
+    font-size: 2em;
+    color: White;
+}
+
+#new-schedule i {
+    margin-top: 12px;
+}
+
+.main {
+    margin: auto;
+    border: 1px solid black;
+    width: 75%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-radius: 25px;
+    padding: 1rem;
+}
+
+.head-title {
+    margin: 10px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.info {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+.form-box {
+    margin: auto;
+    min-width: 50%;
+    max-width: 70%;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    background-color: rgba(169, 169, 169, 0.103);
+    border-radius: 25px;
+}
+
+.form-box input,
+label,
+select {
+    font-size: x-large;
+    height: 2rem;
+    /* display: block; */
+}
+
+.form-box label {
+    margin-top: 2rem;
+}
+
+.form-box button {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    width: 50%;
+    background-color: greenyellow;
+    border: 1px solid greenyellow;
+    padding: 1rem;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: x-large;
+}
+
+.align-center {
+    align-self: center;
+}
+
+.ml-3rem {
+    margin-left: 3rem;
+}
+
+.new-button {
+    text-decoration: none;
+    background-color: greenyellow;
+    padding: 1.5rem;
+    color: black;
+    font-size: larger;
+    border-radius: 15px;
+}
+
+.nav {
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 25px;
+    position: relative;
+}
+
+.nav > .nav-header {
+    display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-header > .nav-title > a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 2rem;
+}
+
+.nav > .nav-btn {
+    display: none;
+}
+
+.nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+}
+
+.nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+    margin-right: 2rem;
+}
+
+.nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav > #nav-check {
+    display: none;
+}
