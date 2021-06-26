@@ -1,5 +1,6 @@
 const express = require('express')
-const routes = require('./routes/schedule.router')
+const scheduleRoutes = require('./routes/schedule.router')
+const teacherRoutes = require('./routes/teacher.router')
 const Teacher = require('./models/teacher.model')
 
 const app = express()
@@ -15,7 +16,8 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use(routes)
+app.use(scheduleRoutes)
+app.use(teacherRoutes)
 
 app.get('*', (req, res) => {
     res.render('404', { message: 'Something went wrong' })

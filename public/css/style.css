@@ -86,7 +86,6 @@ body {
     border-radius: 50%;
     background: brown;
     text-align: center;
-    margin-top: 4px;
     font-size: 2em;
     color: White;
     transition: all 0.5s;
@@ -98,6 +97,29 @@ body {
 }
 
 #new-schedule i {
+    margin-top: 12px;
+}
+
+#new-teacher {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: rgb(3, 148, 3);
+    text-align: center;
+    font-size: 2em;
+    color: White;
+    transition: all 0.5s;
+}
+
+#new-teacher:hover {
+    transform: scale(1.5);
+    background-color: #00a89d;
+}
+
+#new-teacher i {
     margin-top: 12px;
 }
 
