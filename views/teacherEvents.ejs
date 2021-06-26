@@ -1,24 +1,32 @@
 <%- include("./partials/header") -%>
-<h1 class="heading">Schedule for <%= data[0].teacherName %></h1>
+<h1 class="heading">Schedule for <%= teacherName %></h1>
 <% if(data.length === 0){ %>
     <h3 class="heading">No Events Scheduled</h3>
-    <a class="new-button" href="/schedule?id=<%= data[0].teacherId %>&name=<%= data[0].teacherName %>">Add New Event</a>
-
 <% }else{ %>
     <div class="main">
         <div class="head-title">Date</div>
         <div class="head-title">Start Time</div>
         <div class="head-title">End Time</div>
         <div class="head-title">Topic</div>
+        <span></span>
         <% data.forEach((value)=>{ %>
             <div class="info"><%= value.date %></div>
             <div class="info"><%= value.startTime %></div>
             <div class="info"><%= value.endTime %></div>
             <div class="info"><%= value.title %></div>
+            <div>
+                <form title="update Event" class="inline-form" action="/schedule/update/<%= value.id %>" method="GET">
+                    <button type="submit" class="update-btn"><i class="fas fa-edit"></i></button>
+                </form>
+                <form title="Delete Event? &#010Cannot recover after deletion" class="inline-form" action="/schedule/<%= value.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </div>
+            <!-- <a href="/schedule/<%= value.id %>?_method=DELETE" class="delete-btn"><i class="fas fa-trash-alt"></i></a> -->
         <% }) %>
-        <a class="new-button" href="/schedule?id=<%= data[0].teacherId %>&name=<%= data[0].teacherName %>">Add New Event</a>
     </div>    
 <% } %>
+<a class="new-button" href="/schedule?id=<%= teacherId %>&name=<%= teacherName %>">Add New Event</a>
 
 
 <%- include("./partials/footer") -%>

@@ -1,11 +1,13 @@
 const express = require('express')
-
-const router = express.Router()
+const methodOverride = require('method-override')
 const Schedule = require('../models/schedule.model')
 const Teacher = require('../models/teacher.model')
 
+const router = express.Router()
+router.use(methodOverride('_method'))
+
+// Find schedules by date
 router.get('/day/:date', (req, res) => {
-    // Find schedules which are on date = req.params.date
     Schedule.findBy('date', req.params.date, (err, result) => {
         if (err) {
             return res.redirect('/')
@@ -17,6 +19,7 @@ router.get('/day/:date', (req, res) => {
     })
 })
 
+// Get request to render schedule form
 router.get('/schedule', (req, res) => {
     Teacher.getAll((err, allTeachers) => {
         res.render('scheduleForm', {
@@ -28,6 +31,7 @@ router.get('/schedule', (req, res) => {
     })
 })
 
+// Post request to create a schedule
 router.post('/schedule', (req, res) => {
     const { teacher } = req.body
     const teachArray = teacher.split(' ')
@@ -66,15 +70,59 @@ router.post('/schedule', (req, res) => {
     })
 })
 
+// Get schedule of a teacher with teacherId
 router.get('/schedule/:teacherId', (req, res) => {
-    Schedule.findBy('teacherId', req.params.teacherId, (err, foundSchedule) => {
-        if (err) {
-            return res.redirect('/404')
-        }
-        return res.render('teacherEvents', {
-            data: foundSchedule,
-            teacherId: req.params.teacherId,
+    Teacher.findById(req.params.teacherId, (err, foundTeacher) => {
+        Schedule.findBy('teacherId', foundTeacher.id, (er, foundSchedule) => {
+            if (er) {
+                return res.redirect('/404')
+            }
+            return res.render('teacherEvents', {
+                data: foundSchedule,
+                teacherId: foundTeacher.id,
+                teacherName: foundTeacher.name,
+            })
         })
+    })
+})
+
+router.get('/schedule/update/:id', (req, res) => {
+    Schedule.findBy('id', req.params.id, (err, foundSchedule) => {
+        if (err) {
+            return res.render('404', {
+                message: 'Something went wrong, Please try again later',
+            })
+        }
+        return res.render('updateForm', { data: foundSchedule[0] })
+    })
+})
+
+router.put('/schedule/:schedId', (req, res) => {
+    const { teacher } = req.body.schedule
+    const teachArray = teacher.split(' ')
+    ;[req.body.schedule.teacherId, req.body.schedule.teacherName] = teachArray
+    Schedule.updateById(
+        req.params.schedId,
+        req.body.schedule,
+        (err, updatedSchedule) => {
+            if (err) {
+                return res.render('404', {
+                    message: 'Something Went Wrong, Please try again later',
+                })
+            }
+            return res.redirect(`/day/${updatedSchedule.date}`)
+        }
+    )
+})
+
+router.delete('/schedule/:schedId', (req, res) => {
+    Schedule.remove(req.params.schedId, (err) => {
+        if (err) {
+            return res.render('404', {
+                message: 'Unable to Delete, Please Try Again',
+            })
+        }
+        return res.redirect('back')
     })
 })
 

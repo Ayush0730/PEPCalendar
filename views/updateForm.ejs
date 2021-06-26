@@ -1,0 +1,22 @@
+<%- include("./partials/header") -%>
+
+<div>
+    <h1 class="heading"><p>Update Schedule</p></h1>
+    <form action="/schedule/<%= data.id %>?_method=PUT" class="form-box" method="post">
+        <label for="title">Title</label>
+        <input type="text" name="schedule[title]" id="" value="<%= data.title %>">
+        <label for="date">Date</label>
+        <input type="date" name="schedule[date]" id="" value="<%= data.date %>">
+        <label for="startTime">Start Time</label>
+        <input type="time" name="schedule[startTime]" id="" value="<%= data.startTime %>">
+        <label for="endTime">End Time</label>
+        <input type="time" name="schedule[endTime]" id="" value="<%= data.endTime %>">
+        <label for="teacher">Select Teacher</label>
+        <select name="schedule[teacher]" id="teacher">
+            <option value="<%= data.teacherId %> <%= data.teacherName %>"><%= data.teacherId %> <%= data.teacherName %></option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<%- include("./partials/footer") -%>
