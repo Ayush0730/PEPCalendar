@@ -2,6 +2,9 @@
   <h1>PEP Calendar</h1>
 </div>
 
+<h1>Demo Video</h1>
+![Demo](https://user-images.githubusercontent.com/68139755/123519855-5fddab00-d6cb-11eb-851e-e1ef0e4f6c0e.mp4)
+
 #### This is an Events Scheduling dummy App
 
 #### This app has calendar for June 2021, and it can be used to schedule events/classes for Teachers
