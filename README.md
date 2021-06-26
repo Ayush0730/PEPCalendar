@@ -2,8 +2,11 @@
   <h1>PEP Calendar</h1>
 </div>
 
-<h1>Demo Video</h1>
+<h1 align="center">Demo Video</h1>
 https://user-images.githubusercontent.com/68139755/123519855-5fddab00-d6cb-11eb-851e-e1ef0e4f6c0e.mp4
+
+### Database Design
+![image](https://user-images.githubusercontent.com/68139755/123520184-17bf8800-d6cd-11eb-9667-5bbe7d6b109d.png)
 
 #### This is an Events Scheduling dummy App
 
