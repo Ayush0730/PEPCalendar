@@ -119,8 +119,8 @@ body {
 }
 
 .info {
-    margin: 10px;
-    padding: 10px;
+    margin: 1.5rem 1rem;
+    padding: 0.5rem;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 15px;
 }
@@ -180,6 +180,14 @@ select {
     color: black;
     font-size: larger;
     border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.new-button:hover {
+    transform: scale(1.25);
+    background-color: #04df0f;
+    color: white;
+    font-weight: 800;
 }
 
 .nav {
@@ -234,15 +242,27 @@ select {
     display: none;
 }
 
-.delete-form {
+.inline-form {
     justify-self: center;
     align-self: center;
 }
 
-.delete-btn {
-    color: red;
+.inline-form > button {
     font-size: x-large;
     border: none;
     background: none;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.inline-form > button:hover {
+    transform: scale(1.5);
+}
+
+.delete-btn {
+    color: red;
+}
+
+.update-btn {
+    color: #003253;
 }

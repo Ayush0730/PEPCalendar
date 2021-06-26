@@ -86,6 +86,32 @@ router.get('/schedule/:teacherId', (req, res) => {
     })
 })
 
+router.get('/schedule/update/:id', (req, res) => {
+    Schedule.findBy('id', req.params.id, (err, foundSchedule) => {
+        if (err) {
+            return res.render('404', {
+                message: 'Something went wrong, Please try again later',
+            })
+        }
+        return res.render('updateForm', { data: foundSchedule[0] })
+    })
+})
+
+router.put('/schedule/:schedId', (req, res) => {
+    const { teacher } = req.body.schedule
+    const teachArray = teacher.split(' ')
+    ;[req.body.schedule.teacherId, req.body.schedule.teacherName] = teachArray
+
+    Schedule.updateById(req.params.id, req.body.schedule, (err) => {
+        if (err) {
+            return res.render('404', {
+                message: 'Something Went Wrong, Please try again later',
+            })
+        }
+        return res.redirect('back')
+    })
+})
+
 router.delete('/schedule/:schedId', (req, res) => {
     Schedule.remove(req.params.schedId, (err) => {
         if (err) {

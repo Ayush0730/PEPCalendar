@@ -1,7 +1,7 @@
 <%- include("./partials/header") -%>
 <h2 class="heading"><%= date %></h2>
 <% if(data.length === 0){ %>
-    <h3 class="heading">No Events Scheduled</h3>
+    <h3 class="heading">No Events Scheduled</h3> 
 <% }else{ %>
     <div class="main">
         <div class="head-title">Start Time</div>
@@ -14,9 +14,15 @@
             <div class="info"><%= value.endTime %></div>
             <div class="info"><%= value.teacherName %></div>
             <div class="info"><%= value.title %></div>
-            <form title="Delete Event? &#010Cannot recover after deletion" class="delete-form" action="/schedule/<%= value.id %>?_method=DELETE" method="POST">
-                <button type="submit" class="delete-btn"><i class="fas fa-trash-alt"></i></button>
-            </form>
+            <div>
+                <form title="update Event" class="inline-form" action="/schedule/update/<%= value.id %>" method="GET">
+                    <button type="submit" class="update-btn"><i class="fas fa-edit"></i></button>
+                </form>
+                <form title="Delete Event? &#010Cannot recover after deletion" class="inline-form" action="/schedule/<%= value.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </div>
+            
         <% }) %>
     </div>    
 <% } %>
