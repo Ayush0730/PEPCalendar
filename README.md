@@ -3,7 +3,7 @@
 </div>
 
 <h1>Demo Video</h1>
-![Demo](https://user-images.githubusercontent.com/68139755/123519855-5fddab00-d6cb-11eb-851e-e1ef0e4f6c0e.mp4)
+https://user-images.githubusercontent.com/68139755/123519855-5fddab00-d6cb-11eb-851e-e1ef0e4f6c0e.mp4
 
 #### This is an Events Scheduling dummy App
 
