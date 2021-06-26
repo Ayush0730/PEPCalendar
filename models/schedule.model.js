@@ -47,7 +47,7 @@ Schedule.getAll = (result) => {
 
 Schedule.updateById = (id, newSchedule, result) => {
     sql.query(
-        'UPDATE customers SET title = ?, startTime = ?, endTime = ?, date = ?, teacherId = ?, teacherName = ? WHERE id = ?',
+        'UPDATE schedule SET title = ?, startTime = ?, endTime = ?, date = ?, teacherId = ?, teacherName = ? WHERE id = ?',
         [
             newSchedule.title,
             newSchedule.startTime,
@@ -64,7 +64,7 @@ Schedule.updateById = (id, newSchedule, result) => {
             }
 
             if (res.affectedRows === 0) {
-                // not found Customer with the id
+                // Not found
                 result({ kind: 'not_found' }, null)
                 return
             }

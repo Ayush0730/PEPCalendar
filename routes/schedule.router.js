@@ -101,15 +101,18 @@ router.put('/schedule/:schedId', (req, res) => {
     const { teacher } = req.body.schedule
     const teachArray = teacher.split(' ')
     ;[req.body.schedule.teacherId, req.body.schedule.teacherName] = teachArray
-
-    Schedule.updateById(req.params.id, req.body.schedule, (err) => {
-        if (err) {
-            return res.render('404', {
-                message: 'Something Went Wrong, Please try again later',
-            })
+    Schedule.updateById(
+        req.params.schedId,
+        req.body.schedule,
+        (err, updatedSchedule) => {
+            if (err) {
+                return res.render('404', {
+                    message: 'Something Went Wrong, Please try again later',
+                })
+            }
+            return res.redirect(`/day/${updatedSchedule.date}`)
         }
-        return res.redirect('back')
-    })
+    )
 })
 
 router.delete('/schedule/:schedId', (req, res) => {
