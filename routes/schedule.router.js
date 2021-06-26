@@ -109,16 +109,41 @@ router.put('/schedule/:schedId', (req, res) => {
     const { teacher } = req.body.schedule
     const teachArray = teacher.split(' ')
     ;[req.body.schedule.teacherId, req.body.schedule.teacherName] = teachArray
-    Schedule.updateById(
-        req.params.schedId,
-        req.body.schedule,
-        (err, updatedSchedule) => {
-            if (err) {
-                return res.render('404', {
-                    message: 'Something Went Wrong, Please try again later',
-                })
+    Schedule.findBy(
+        'teacherId',
+        req.body.schedule.teacherId,
+        (err, foundSchedule) => {
+            let i
+            for (i = 0; i < foundSchedule.length; i += 1) {
+                // Logic to check if time if schedule clashes
+                if (req.body.schedule.date === foundSchedule[i].date) {
+                    if (
+                        req.body.schedule.startTime <
+                            foundSchedule[i].endTime &&
+                        req.body.schedule.endTime > foundSchedule[i].startTime
+                    ) {
+                        res.render('404', {
+                            message: `${req.body.schedule.teacherName} is not free on requested time`,
+                        })
+                        break
+                    }
+                }
             }
-            return res.redirect(`/day/${updatedSchedule.date}`)
+            if (i === foundSchedule.length) {
+                Schedule.updateById(
+                    req.params.schedId,
+                    req.body.schedule,
+                    (er, updatedSchedule) => {
+                        if (er) {
+                            return res.render('404', {
+                                message:
+                                    'Something Went Wrong, Please try again later',
+                            })
+                        }
+                        return res.redirect(`/day/${updatedSchedule.date}`)
+                    }
+                )
+            }
         }
     )
 })
