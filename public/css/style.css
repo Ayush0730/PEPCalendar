@@ -33,7 +33,7 @@ body {
 }
 
 .day:hover {
-    background-color: rgba(21, 184, 0, 0.842);
+    background-color: rgba(10, 255, 194, 0.589);
     color: rgb(255, 251, 4);
     transform: scale(1.25);
 }
@@ -89,6 +89,12 @@ body {
     margin-top: 4px;
     font-size: 2em;
     color: White;
+    transition: all 0.5s;
+}
+
+#new-schedule:hover {
+    transform: scale(1.5);
+    background-color: #00a89d;
 }
 
 #new-schedule i {
@@ -101,7 +107,7 @@ body {
     width: 75%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.2fr;
     border-radius: 25px;
     padding: 1rem;
 }
@@ -165,6 +171,9 @@ select {
 }
 
 .new-button {
+    display: flex;
+    max-width: fit-content;
+    margin: 2rem auto;
     text-decoration: none;
     background-color: greenyellow;
     padding: 1.5rem;
@@ -223,4 +232,17 @@ select {
 
 .nav > #nav-check {
     display: none;
+}
+
+.delete-form {
+    justify-self: center;
+    align-self: center;
+}
+
+.delete-btn {
+    color: red;
+    font-size: x-large;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
