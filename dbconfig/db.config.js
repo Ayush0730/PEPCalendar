@@ -1,7 +1,7 @@
 const mysql = require('mysql')
 const configData = require('./configData')
 // Create a connection to the database
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: configData.HOST,
     user: configData.USER,
     password: configData.PASSWORD,
@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 })
 
 // open the MySQL connection
-connection.connect((error) => {
+connection.getConnection((error) => {
     if (error) throw error
     // eslint-disable-next-line
     console.log('Successfully connected to the database.')
