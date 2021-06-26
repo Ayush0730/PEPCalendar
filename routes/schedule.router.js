@@ -73,16 +73,24 @@ router.post('/schedule', (req, res) => {
 // Get schedule of a teacher with teacherId
 router.get('/schedule/:teacherId', (req, res) => {
     Teacher.findById(req.params.teacherId, (err, foundTeacher) => {
-        Schedule.findBy('teacherId', foundTeacher.id, (er, foundSchedule) => {
-            if (er) {
-                return res.redirect('/404')
-            }
-            return res.render('teacherEvents', {
-                data: foundSchedule,
-                teacherId: foundTeacher.id,
-                teacherName: foundTeacher.name,
-            })
-        })
+        if (err) {
+            res.render('404', { message: 'Something went wrong' })
+        } else {
+            Schedule.findBy(
+                'teacherId',
+                foundTeacher.id,
+                (er, foundSchedule) => {
+                    if (er) {
+                        return res.redirect('/404')
+                    }
+                    return res.render('teacherEvents', {
+                        data: foundSchedule,
+                        teacherId: foundTeacher.id,
+                        teacherName: foundTeacher.name,
+                    })
+                }
+            )
+        }
     })
 })
 
