@@ -1,11 +1,19 @@
 <div align="center">
   <h1>PEP Calendar</h1>
-  <img src="assets/Wordnook banner.png" />
 </div>
 
 #### This is an Events Scheduling dummy App
 
 #### This app has calendar for June 2021, and it can be used to schedule events/classes for Teachers
+
+### Functionalities -
+
+-   Create Teachers
+-   Create Classes and assign teachers to the Classes
+-   Modify a Scheduled Class
+-   Delete a Scheduled Class
+-   Filter Classes by Teacher
+-   Get Classes on a particular date
 
 ## Technology Stack 🛠️
 
