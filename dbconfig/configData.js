@@ -1,6 +1,6 @@
 module.exports = {
-    HOST: 'YOUR_HOST_NAME',
-    USER: 'USER',
-    PASSWORD: 'PASSWORD',
-    DB: 'DATABSE',
+     HOST: 'brj9csqliktgn44ihh0n-mysql.services.clever-cloud.com',
+    USER: 'uoofl5osf5wvlzdp',
+    PASSWORD: 'nFiJwxTk8Rb3OT9WszBs',
+    DB: 'brj9csqliktgn44ihh0n',
 }
