@@ -4,22 +4,24 @@
     <h1 class="heading"><p>Create Schedule</p></h1>
     <form action="/schedule" class="form-box" method="post">
         <label for="title">Title</label>
-        <input type="text" name="title" id="">
+        <input type="text" name="title" required>
         <label for="date">Date</label>
-        <input type="date" name="date" id="" value='<%= date %>'>
+        <input type="date" name="date" required value='<%= date %>'>
         <label for="startTime">Start Time</label>
-        <input type="time" name="startTime" id="">
+        <input type="time" name="startTime" required>
         <label for="endTime">End Time</label>
-        <input type="time" name="endTime" id="">
+        <input type="time" name="endTime" required>
         <label for="teacher">Select Teacher</label>
-        <select name="teacher" id="teacher">
+        <select name="teacher" id="teacher" required>
             <% if(teacherId){ %>
                 <option value="<%= teacherId %> <%= teacherName %>"><%= teacherId %> <%= teacherName %></option>
             <% }else{ %>
                 <option value=""></option>
             <% } %>
             <% data.forEach((teacher) => { %>
-                <option value="<%= teacher.id %> <%= teacher.name %>"><%= teacher.id %> <%= teacher.name %></option>
+                <% if(teacher.id != teacherId){ %>
+                    <option value="<%= teacher.id %> <%= teacher.name %>"><%= teacher.id %> <%= teacher.name %></option>
+                <% } %>
             <% }) %>
         </select>
         <button type="submit">Submit</button>
